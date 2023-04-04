@@ -3,7 +3,9 @@ This repository contains the implementation for our work "RL-Net: Interpretable 
 
 This work was achieved by Lucile Dierckx, Rosana Veroneze and Siegfried Nijssen (UCLouvain/ICTEAM, Unicamp/FEEC).
 
-The neural network can be fully translated to an ordered list of decision rules once trained. 
+The neural network can be fully translated to an ordered list of decision rules once trained.
+
+To train and test the model, run the *train_and_test_model.py* or *train_and_test_model_ML.py* file.
 
 ### Dependencies
 1. numpy

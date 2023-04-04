@@ -1,0 +1,16 @@
+name,lr,lambda_and,loc_mean,limit,l2_lambda,epochs,callback,class_weights
+adult,0.001,1E-06,-3,0,0.0001,10000,True,True
+magic,0.001,0,0,0,0.01,10000,True,True
+house,0.001,1E-06,-3,0,0.1,10000,True,True
+heloc,0.001,1E-06,-1,1000,0.0001,10000,True,True
+mushroom,0.01,0.001,0,2500,0.0001,10000,True,True
+chess,0.001,1E-06,-3,5000,1E-05,10000,True,True
+ads,0.01,0.001,-5,5000,0.001,10000,True,True
+nursery,0.005,0,-5,1000,0.0001,10000,True,True
+car,0.005,0,0,1000,1E-06,10000,True,True
+pageblocks,0.05,0.0001,0,0,0.0001,10000,True,True
+pendigits,0.005,1E-05,0,5000,0.001,10000,True,True
+contraceptivemc,0.001,0.001,-3,1000,0,10000,True,True
+drive,0.01,0,-5,2500,1E-05,10000,True,True
+yeast,0.005,0.001,-5,0,1E-06,10000,True,False
+scene,0.01,0.0001,-1,0,1E-06,10000,True,False
