@@ -223,7 +223,6 @@ def train(model, X, Y, X_val, Y_val, batch_size, nbOutput, learning_rate=1e-2, l
     acc = accuracy_score(y, y_predr)
     print('init acc', acc)
     print_rules(model)
-    print(model.and_layer.loc[0])
     best_loss = sys.maxsize
     best_epoch = -1
     best_w = None

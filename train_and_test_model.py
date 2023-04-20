@@ -68,5 +68,5 @@ def worker(name):
         
 
 name = "mushroom"
-#["adult", "magic", "house", "heloc", "mushroom", "chess", "ads", "nursery", "car", "pageblocks", "pendigits", "contraceptivemc", "drive", "covtype"]
+#["adult", "magic", "house", "heloc", "mushroom", "chess", "ads", "nursery", "car", "pageblocks", "pendigits", "contraceptivemc", "drive"]
 worker(name)

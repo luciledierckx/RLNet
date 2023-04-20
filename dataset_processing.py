@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import OrdinalEncoder, LabelEncoder
+from sklearn.preprocessing import OneHotEncoder, LabelEncoder
 from datasets.FeatureBinarizer import FeatureBinarizer
 from sklearn.model_selection import train_test_split
 
@@ -59,9 +59,6 @@ def load_and_transform_data(dataset, doFeatureBinarizer=True, doOrdinalEncode=Fa
     elif dataset == "drive": 
         ds = pd.read_csv(ds_folder+"Drive/Sensorless_drive_diagnosis.txt", header=None, skipinitialspace=True, sep=' ')
         lb = ds.iloc[:,48]; ds = ds.iloc[:,:48]
-    elif dataset == "covtype": 
-        ds = pd.read_csv(ds_folder+"Covtype/covtype.data", header=None, skipinitialspace=True)
-        lb = ds.iloc[:,54]; ds = ds.iloc[:,:54]
     elif dataset == "yeast": 
         ds = pd.read_csv(ds_folder+"Yeast/yeast-train.csv", header=0, skipinitialspace=True)
         lb = ds.iloc[:,-14:]; ds = ds.iloc[:,:-14]
@@ -112,9 +109,9 @@ def load_and_transform_data(dataset, doFeatureBinarizer=True, doOrdinalEncode=Fa
         X_tst = fb.transform(X_tst)
     
     elif doOrdinalEncode:
-        enc = OrdinalEncoder()
-        X[categorical_cols] = enc.fit_transform(X[categorical_cols])
-        X_tst[categorical_cols] = enc.transform(X_tst[categorical_cols])
+        enc = OneHotEncoder(sparse=False)
+        X = pd.concat((X[numerical_cols],pd.DataFrame(enc.fit_transform(X[categorical_cols])).set_index(X.index)),axis=1)
+        X_tst = pd.concat((X_tst[numerical_cols], pd.DataFrame(enc.transform(X_tst[categorical_cols])).set_index(X_tst.index)),axis=1)
             
     if dataset not in ["yeast", "scene"]:
         le = LabelEncoder()
@@ -128,5 +125,5 @@ def load_and_transform_data(dataset, doFeatureBinarizer=True, doOrdinalEncode=Fa
 
 if __name__ == "__main__":  
     dataset = "yeast" 
-    # adult, magic, house, heloc, mushroom, chess, ads, nursery, car, pageblocks, pendigits, contraceptivemc, drive, covtype, yeast, scene
+    # adult, magic, house, heloc, mushroom, chess, ads, nursery, car, pageblocks, pendigits, contraceptivemc, drive, yeast, scene
     X, Y, X_tst, Y_tst = load_and_transform_data(dataset, doFeatureBinarizer=True, doOrdinalEncode=False)
